@@ -4,6 +4,7 @@ import entity.Product;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+import steps.ProductsSteps;
 
 public class ProductsTest extends BaseTest{
     //loginPage.openPage()
@@ -22,8 +23,7 @@ public class ProductsTest extends BaseTest{
 
     @Test(description = "add a product to cart and check if it was actually added")
     public void addToCartTest(){
-        Product product = productsPage.getProductByName(SAUCE_LABS_BIKE_LIGHT);
-        productsSteps.loginAndAddProductToCart(USERNAME, PASSWORD, product);
+        Product product = productsSteps.loginAndAddProductToCart(USERNAME, PASSWORD, SAUCE_LABS_BACKPACK);
         headerPage.openCartPage();
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(cartPage.getQuantity(), 1);
@@ -34,8 +34,7 @@ public class ProductsTest extends BaseTest{
 
     @Test(description = "check if content of button 'add to cart' changes after adding")
     public void checkContentOfAddToCartButton(){
-        Product product = productsPage.getProductByName(SAUCE_LABS_BACKPACK);
-        productsSteps.loginAndAddProductToCart(USERNAME, PASSWORD, product);
+        Product product = productsSteps.loginAndAddProductToCart(USERNAME, PASSWORD, SAUCE_LABS_BACKPACK);
         Assert.assertEquals(product.getButtonText(), "Remove");
     }
 }

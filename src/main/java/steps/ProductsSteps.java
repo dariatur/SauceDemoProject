@@ -15,11 +15,12 @@ public class ProductsSteps extends BaseSteps{
     }
 
     @Step("Login and add product to cart")
-    public ProductsSteps loginAndAddProductToCart(String username, String password, Product product) {
+    public Product loginAndAddProductToCart(String username, String password, String name) {
         loginPage.openPage(LOGIN_PAGE_URL)
                 .login(username, password);
+        Product product = productsPage.getProductByName(name);
         product.addToCart();
-        return this;
+        return product;
     }
 
     @Step("Login and get amount of products on the page")
