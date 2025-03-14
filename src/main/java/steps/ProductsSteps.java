@@ -2,12 +2,14 @@ package steps;
 
 import entity.Product;
 import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import pages.LoginPage;
 import pages.ProductsPage;
 
 import static constants.IConstants.LOGIN_PAGE_URL;
 
+@Log4j2
 public class ProductsSteps extends BaseSteps{
 
     public ProductsSteps(WebDriver driver) {
@@ -27,6 +29,7 @@ public class ProductsSteps extends BaseSteps{
     public int loginAndGetAmount(String username, String password){
         loginPage.openPage(LOGIN_PAGE_URL)
                 .login(username, password);
-        return productsPage.getProductsList().size();
+        int amount = productsPage.getProductsAmount();
+        return amount;
     }
 }

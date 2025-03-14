@@ -2,8 +2,10 @@ package steps;
 
 import constants.IConstants;
 import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 
+@Log4j2
 public class HeaderSteps extends BaseSteps{
 
     public HeaderSteps(WebDriver driver) {
@@ -15,7 +17,7 @@ public class HeaderSteps extends BaseSteps{
         loginPage.openPage(IConstants.LOGIN_PAGE_URL)
                 .waitForPageOpened()
                 .login(username, password);
-        headerPage.clickOnCartButton();
+        headerPage.openCartPage();
         return this;
     }
 

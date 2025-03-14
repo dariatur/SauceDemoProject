@@ -1,6 +1,7 @@
 package pages;
 
 import entity.User;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -8,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+@Log4j2
 public class LoginPage extends BasePage{
     public static final By USERNAME_INPUT = By.xpath("//*[@data-test='username']");
     public static final By PASSWORD_INPUT = By.xpath("//*[@data-test='password']");
@@ -25,6 +27,7 @@ public class LoginPage extends BasePage{
         driver.findElement(USERNAME_INPUT).sendKeys(user.getUsername());
         driver.findElement(PASSWORD_INPUT).sendKeys(user.getPassword());
         driver.findElement(LOGIN_BUTTON).click();
+        log.info("Login with username {}, password {}", user.getUsername(), user.getPassword());
         return new ProductsPage(driver);
     }
 
@@ -32,11 +35,14 @@ public class LoginPage extends BasePage{
         driver.findElement(USERNAME_INPUT).sendKeys(username);
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
         driver.findElement(LOGIN_BUTTON).click();
+        log.info("Login with username {}, password {}", username, password);
         return new ProductsPage(driver);
     }
 
     public String getErrorMessageText() {
-        return driver.findElement(ERROR_MESSAGE).getText();
+        String errorMessage = driver.findElement(ERROR_MESSAGE).getText();
+        log.info("Get error message " + errorMessage);
+        return errorMessage;
     }
 
     public WebDriver getDriver(){
@@ -46,11 +52,13 @@ public class LoginPage extends BasePage{
     public LoginPage waitForPageOpened() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.visibilityOfElementLocated(LOGIN_BUTTON));
+        log.info("Waiting until login button is visible");
         return this;
     }
     @Override
     public LoginPage openPage(String url){
         driver.get(url);
+        log.info("Open login page url {}", url);
         return this;
     }
 }

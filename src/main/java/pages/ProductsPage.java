@@ -1,6 +1,7 @@
 package pages;
 
 import entity.Product;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 import java.util.List;
 
+@Log4j2
 public class ProductsPage extends HeaderPage {
     public ProductsPage(WebDriver driver) {
         super(driver);
@@ -19,6 +21,7 @@ public class ProductsPage extends HeaderPage {
         for (WebElement element: elements){
             result.add(new Product(element));
         }
+        log.info("Get products list: " + result);
         return result;
     }
 
@@ -30,6 +33,12 @@ public class ProductsPage extends HeaderPage {
                 product = elem;
             }
         }
+        log.info("Get product by name {}, product: {}", name, product);
         return product;
+    }
+
+    public int getProductsAmount(){
+        log.info("Get products amount: " + getProductsList().size());
+        return getProductsList().size();
     }
 }

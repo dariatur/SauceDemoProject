@@ -1,8 +1,10 @@
 package entity;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+@Log4j2
 public class Product extends BaseEntity {
     private String name;
     private String price;
@@ -32,6 +34,15 @@ public class Product extends BaseEntity {
     }
 
     public void addToCart(){
+        log.info("Add product {} to cart", this);
         cartButton.click();
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "name='" + name + '\'' +
+                ", price='" + price + '\'' +
+                '}';
     }
 }
