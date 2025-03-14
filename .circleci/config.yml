@@ -46,7 +46,7 @@ workflows:
                 - master
     jobs:
       - ui-tests
-      filters:
-        branches:
-          only:
-            - lesson25
+#      filters:
+#        branches:
+#          only:
+#            - lesson25
