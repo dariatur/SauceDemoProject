@@ -38,8 +38,6 @@
                         <argLine>
                             -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectjweaver.version}/aspectjweaver-${aspectjweaver.version}.jar -Xmx256m
                         </argLine>
-                    </configuration>
-                    <configuration>
                         <rerunFailingTestsCount>2</rerunFailingTestsCount>
                     </configuration>
                 <dependencies>
