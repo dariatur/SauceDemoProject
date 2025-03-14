@@ -24,7 +24,7 @@ public class LoginTest extends Preconditions {
     public void loginWithEmptyFieldsTest(){
         loginSteps.loginAndWaitForPageOpened(userWithEmptyFields);
         //Assert.assertEquals(loginPage.getErrorMessageText(), LoginPage.EMPTY_FIELD_USERNAME_ERROR_TEXT);
-        Assert.assertEquals(loginPage.getErrorMessageText(), "LoginPage.EMPTY_FIELD_USERNAME_ERROR_TEXT");
+        Assert.assertEquals(loginPage.getErrorMessageText(), LoginPage.EMPTY_FIELD_USERNAME_ERROR_TEXT);
     }
 
     @Test(description = "login with incorrect data")
