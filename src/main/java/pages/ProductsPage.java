@@ -11,6 +11,7 @@ import java.util.List;
 
 @Log4j2
 public class ProductsPage extends HeaderPage {
+    private static final String PRODUCT_ITEM = "";
     public ProductsPage(WebDriver driver) {
         super(driver);
     }
@@ -23,6 +24,10 @@ public class ProductsPage extends HeaderPage {
         }
         log.info("Get products list: " + result);
         return result;
+    }
+
+    public int getProductsListSize(){
+        return getProductsList().size();
     }
 
     public Product getProductByName(String name){

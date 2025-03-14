@@ -12,11 +12,9 @@ public class HeaderPage extends BasePage{
     public static final By MENU_BUTTON = By.id("react-burger-menu-btn");
     public static final By MENU_ELEM = By.className("bm-menu-wrap");
     public static final By HEADER_ELEM = By.id("header_container");
-    private LoginPage loginPage;
 
     public HeaderPage(WebDriver driver) {
         super(driver);
-        loginPage = new LoginPage(driver);
     }
 
     public List<WebElement> getHeaderElems(){
@@ -34,6 +32,10 @@ public class HeaderPage extends BasePage{
     public WebElement getMenuButton(){
         log.info("Get menu button in header");
         return driver.findElement(MENU_BUTTON);
+    }
+
+    public void clickOnMenuButton() {
+        getMenuButton().click();
     }
 
     public WebElement getMenuElement(){
