@@ -16,7 +16,7 @@ pipeline {
       stage('Testing') {
          steps {
             // Get some code from a GitHub repository
-            git branch: "${params.BRANCH}", url: 'https://github.com/dariatur/SauceDemoProject.git'
+            git branch: "lesson25", url: 'https://github.com/dariatur/SauceDemoProject.git'
 
             // Run Maven on a Unix agent.
              sh "mvn clean -Dtest=LoginTest test"
